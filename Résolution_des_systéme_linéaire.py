@@ -27,7 +27,7 @@ def main():
     selected_option = st.radio("Sélectionnez une méthode", ["Méthode direct" ,"Méthode itérative" ])
     matrice_html=f.matriceA_html()
     vecteur_html=f.vecteur_html()
-    col1, col2 = st.columns([3,1])
+    col1, col2 = st.columns(2)
     with col1:
         st.components.v1.html(matrice_html,width=300, height=300)
     with col2:
