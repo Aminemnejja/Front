@@ -53,7 +53,7 @@ def app_multiply_matrices():
             exit(0)
         matrix_type_B = dt.determine_matrix_type(B)
         st.success(dt.message_info(matrix_type_A, A))
-        st.success(dt.message_info(matrix_type_B, B) )  
+        st.success(dt.message_info(matrix_type_B, B,"B") )  
 
         if matrix_type_A[0] == "matrice bande" and matrix_type_B[0] == "demi bande inférieur" and matrix_type_A[1] == matrix_type_B[1]:
             result = MA.multiplication_matrice_band_demi_bande(A, B, matrix_type_A[1], n)

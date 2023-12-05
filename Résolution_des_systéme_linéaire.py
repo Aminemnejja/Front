@@ -90,7 +90,7 @@ def main():
                 elif operation=="Décomposition LU":
                   
                     if  matrix_type_A[0]=="matrice bande" and np.allclose(A, A.T) and np.all(np.linalg.eigvals(A) >0):
-                        st.header("A=L.D.L\u1D57")
+                        st.header("A=L.D.L\u1D57=LU")
                         L,D=m.decomposition_LU_bande_Symetrique(A, n, matrix_type_A[1])
                         U=np.dot(D,L.T)
                         y = t.sys_lin_inf_demiBande(L, b,n, matrix_type_A[1])
@@ -106,7 +106,7 @@ def main():
                         st.dataframe(FR.matrix_to_fraction(x))
                         
                     elif matrix_type_A[0]=="matrice bande"  and  est_decomposable_LU(A) :
-                        st.header("A=L.D")
+                        st.header("A=L.U")
                         L,U=m.decomposition_LU_bande(A, n, matrix_type_A[1])
                         y = t.sys_lin_inf_demiBande(L, b,n, matrix_type_A[1])
                         x = t.sys_lin_sup_demiBande(U, y,n, matrix_type_A[1])
@@ -120,7 +120,7 @@ def main():
                         st.write("X=")
                         st.dataframe(FR.matrix_to_fraction(x))
                     elif  matrix_type_A[0]=="Symétrique" and np.all(np.linalg.eigvals(A) >0):
-                        st.header("A=L.D.L\u1D57")
+                        st.header("A=L.D.L\u1D57=LU")
                         L,D=m.decomposition_LU_dense_Symetrique(A, n)
                         U=np.dot(D,L.T)
                         y = t.sys_lin_inf_dense(L, b,n)
@@ -135,7 +135,7 @@ def main():
                         st.write("X=")
                         st.dataframe(FR.matrix_to_fraction(x))
                     elif  est_decomposable_LU(A) :
-                        st.header("A=L.D")
+                        st.header("A=L.U")
                         L,U=m.decomposition_LU_dense(A, n)
                         y = t.sys_lin_inf_dense(L, b,n)
                         x = t.sys_lin_sup_dense(U, y,n)

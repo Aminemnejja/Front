@@ -4,7 +4,10 @@ def determine_matrix_type(matrice,m=0):
     a=est_matrice_inf_bande(matrice)
     b=est_matrice_sup_bande(matrice)
     c=est_bande(matrice)
-    if a[0]:
+    d=np.allclose(matrice, np.diag(np.diagonal(matrice)))
+    if d:
+        return "Diagonale"
+    elif a[0]:
         return "demi bande inférieur",a[1]
     elif b[0]:
         return "demi bande supérieur" ,b[1]
@@ -56,16 +59,16 @@ def est_bande(matrice):
         return True,max(a[1],b[1])
     else :
         return False,False
-def message_info(matrix_type,A):
+def message_info(matrix_type,A,msg='A'):
     if isinstance(matrix_type, str):
-        return f"Type de matrice A détecté : {matrix_type}"
+        return f"Type de matrice {msg} détecté : {matrix_type}"
     elif matrix_type[0]=="matrice bande" and np.allclose(A, A.T): 
-        return f"Type de matrice A détecté  est une matrice  bande symétrique  de largeur m=  {matrix_type[1]}"
+        return f"Type de matrice {msg} détecté  est une matrice  bande symétrique  de largeur m=  {matrix_type[1]}"
     elif matrix_type[0]=="matrice bande" :
-        return f"Type de matrice A détecté  est une matrice  bande   de largeur m=  {matrix_type[1]}"        
+        return f"Type de matrice {msg} détecté  est une matrice  bande   de largeur m=  {matrix_type[1]}"        
     else:
         
-        return f"Type de matrice A détecté  est une matrice demi bande inférieur de largeur m=  {matrix_type[1]}"
+        return f"Type de matrice :{msg}  détecté  est une matrice demi bande inférieur de largeur m=  {matrix_type[1]}"
 def diagonales_nulles_sup(matrice):
     # Extraire les diagonales
     diagonales = [np.diag(matrice, k=-i) for i in range(-matrice.shape[0]+1, 0)]
