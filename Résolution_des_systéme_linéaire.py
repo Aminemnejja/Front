@@ -29,9 +29,9 @@ def main():
     vecteur_html=f.vecteur_html()
     col1, col2 = st.columns([3,1])
     with col1:
-        st.components.v1.html(matrice_html,width=600, height=600)
+        st.components.v1.html(matrice_html,width=300, height=300)
     with col2:
-        st.components.v1.html(vecteur_html,width=300, height=600)
+        st.components.v1.html(vecteur_html,width=300, height=300)
     if selected_option=="Méthode direct":
         operation = st.selectbox("Choisissez l'opération ", ["Gauss","Gauss_jordan","Décomposition LU","Cholesky"])
          
