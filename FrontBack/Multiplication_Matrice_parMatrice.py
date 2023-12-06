@@ -23,7 +23,7 @@ def main():
         if st.button("Résultat"):
             app_multiply_matrices()
 
-    elif selected_option == "Multiplication par inverse de matrice A demi bande":
+    elif selected_option == " Chercher inverse de A  ":
         st.header("Multiplication de  A\u207B\u00B9")
         st.components.v1.html(matriceA_html,width=300, height=300)
   
@@ -96,10 +96,16 @@ def app_inverse_multiply_band_matrix():
             with col2:
                 st.success("Résultat de multiplication")
                 st.dataframe(FR.matrix_to_fraction(result[0]))
-        else:
-            
-
-
+        else :
+            inverse=MA.gauss_jordan_inverse(A,n)
+            I=np.identity(n)
+            col1, col2 = st.columns(2)
+            with col1:
+                st.success("Résultat Inverse de matrice:")
+                st.dataframe(FR.matrix_to_fraction(inverse))
+            with col2:
+                st.success("Résultat de multiplication")
+                st.dataframe(FR.matrix_to_fraction(I))
 
                 
         
