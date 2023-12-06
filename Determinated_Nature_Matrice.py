@@ -5,7 +5,11 @@ def determine_matrix_type(matrice,m=0):
     b=est_matrice_sup_bande(matrice)
     c=est_bande(matrice)
     d=np.allclose(matrice, np.diag(np.diagonal(matrice)))
-    if d:
+    if np.all(np.array(matrice) == 0):
+        return "matrice nulle"
+    elif np.array_equal(np.array(matrice), np.eye(len(matrice))):
+        return "matrice d'identité "
+    elif d:
         return "Diagonale"
     elif a[0]:
         return "demi bande inférieur",a[1]

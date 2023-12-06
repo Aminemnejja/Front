@@ -46,16 +46,13 @@ def app_multiply_matrices():
         n = A.shape[0]
         
         matrix_type_A = dt.determine_matrix_type(A)
-        st.write(n)
 
         B =np.array(f.get_matrix_values_B(),dtype=float)
-        st.write(B.shape[0])
-        st.dataframe(A)
-        st.dataframe(B)
 
-        ##if (n!=B.shape[0]):
-            ##st.warning("Les deux matrice  doit etre de méme Taile")
-            ##exit(0)
+
+        if (n!=B.shape[0]):
+            st.warning("Les deux matrice  doit etre de méme Taile")
+            exit(0)
         matrix_type_B = dt.determine_matrix_type(B)
         st.success(dt.message_info(matrix_type_A, A))
         st.success(dt.message_info(matrix_type_B, B,"B") )  
