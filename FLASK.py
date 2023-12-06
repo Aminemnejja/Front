@@ -62,7 +62,7 @@ def matriceA_html():
             display: flex;
             flex-direction: column;
             align-items: left;
-            margin: 20px;
+            margin-top: 20px;
         }
         
         body {
@@ -75,7 +75,7 @@ def matriceA_html():
         }
         
         .matrix {
-            margin: 10px;
+            margin: 5px;
             display: flex;
             flex-direction: column;
         }
@@ -120,27 +120,48 @@ def matriceA_html():
         }
         
         .button-container {
-            margin-top: 10px;
-        }
-        
+        margin-top: 10px;
+      
+    }
         .add-button {
             display: inline-block;
-            padding: 2px 12px;
-            margin: 1px;
-            line-height: 20px;
-            color: #333333;
-            color: var(--color-button);
+            padding: 2px 8px;
+            margin: 0px;
+            line-height: 1;
+            color: #ffffff;
             text-align: center;
-            vertical-align: middle;
+            text-decoration: none;
             cursor: pointer;
-            background-color: hsl(0, 0%, 97%);
-            background-image: linear-gradient(to bottom, hsl(0, 0%, 100%), hsl(0, 0%, 90%));
             border: 1px solid;
-            border-color: silver;
-            border-bottom-color: darkgray;
-            border-radius: 2px;
-            box-shadow: inset 0px 1px 0px hsla(0, 0%, 100%, 0.2), 0px 1px 2px hsla(0, 0%, 0%, 0.05);
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        .add-button.blue-theme {
+            background-color: #3498db;
+            border-color: #87CEEB;
+        }
+
+        .add-button.dark-theme {
+            background-color: #242424;
+            border-color: #242424;
+        }
+
+        .add-button.light-theme {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            color: #242424;
+        }
+
+        .add-button:hover {
+            background-color: #4682b4;
+            color: #ffffff;
+        }
+        .matrix-cell-filled {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
     </style>
 </head>
 
@@ -152,22 +173,35 @@ def matriceA_html():
     </div>
 
     <div class="button-container">
-        <button class="add-button" onclick="add()">+</button>
-        <button class="add-button" onclick="retirer()">-</button>
-        <button class="add-button" onclick="effacer()">effacer</button>
-        <button class="add-button" onclick="getMatrixValuesFromPython()">Sauvgarder A </button>
+        <button class="add-button blue-theme" onclick="add()">+</button>
+        <button class="add-button blue-theme" onclick="retirer()">-</button>
+        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
+        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+
+
     </div>
 
     <script>
         var matrixValues = [];
         var numRows = 2;
         var numCols = 2;
+        function remplirCasesVides() {
+        var inputs = document.getElementsByClassName("matrix-input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value === "") {
+                inputs[i].value = 0;
+            }
+        }
+        getMatrixValuesFromPython()
+    }
 
         function createMatrix() {
             var oldMatrix = document.getElementById("matrix");
             if (oldMatrix) {
                 oldMatrix.remove();
             }
+
 
             var matrixContainer = document.getElementById("matrix-container");
             var matrix = document.createElement("div");
@@ -183,9 +217,10 @@ def matriceA_html():
                     cell.classList.add("matrix-cell");
 
                     var input = document.createElement("input");
-                    input.type = "text";
+                    input.type = "number";
                     input.classList.add("matrix-input");
                     input.id = "cell_" + i + "_" + j;
+                    
 
                     cell.appendChild(input);
                     row.appendChild(cell);
@@ -208,29 +243,45 @@ def matriceA_html():
         }
 
         function restoreMatrixValues() {
-            var inputs = document.getElementsByClassName("matrix-input");
+                var inputs = document.getElementsByClassName("matrix-input");
 
-            for (var i = 0; i < numRows; i++) {
-                for (var j = 0; j < numCols; j++) {
-                    var value = matrixValues[i] && matrixValues[i][j] !== undefined ? matrixValues[i][j] : '';
-                    inputs[i * numCols + j].value = value;
+                for (var i = 0; i < numRows; i++) {
+                    for (var j = 0; j < numCols; j++) {
+                        var value = matrixValues[i] && matrixValues[i][j] !== undefined ? matrixValues[i][j] : '';
+                        inputs[i * numCols + j].value = value;
+
+                        if (value !== '') {
+                            inputs[i * numCols + j].classList.add('matrix-cell-filled');
+                        } else {
+                            inputs[i * numCols + j].classList.remove('matrix-cell-filled');
+                        }
+                    }
                 }
+                attachEventListeners();
             }
-        }
 
-        function saveMatrixValues() {
-            var inputs = document.getElementsByClassName("matrix-input");
-            matrixValues = [];
 
-            for (var i = 0; i < numRows; i++) {
-                var rowValues = [];
-                for (var j = 0; j < numCols; j++) {
-                    var inputValue = inputs[i * numCols + j].value;
-                    rowValues.push(inputValue);
+                    function saveMatrixValues() {
+                var inputs = document.getElementsByClassName("matrix-input");
+                matrixValues = [];
+
+                for (var i = 0; i < numRows; i++) {
+                    var rowValues = [];
+                    for (var j = 0; j < numCols; j++) {
+                        var inputValue = inputs[i * numCols + j].value;
+                        rowValues.push(inputValue);
+
+                        if (inputValue !== '') {
+                            inputs[i * numCols + j].classList.add('matrix-cell-filled');
+                        } else {
+                            inputs[i * numCols + j].classList.remove('matrix-cell-filled');
+                        }
+                    }
+                    matrixValues.push(rowValues);
                 }
-                matrixValues.push(rowValues);
+                attachEventListeners();
             }
-        }
+
 
         function add() {
             saveMatrixValues();
@@ -291,8 +342,31 @@ def matriceA_html():
                 .then(data => console.log('Success:', data))
                 .catch(error => console.error('Error:', error));
         }
+        function attachEventListeners() {
+            var inputs = document.getElementsByClassName("matrix-input");
 
-        createMatrix();
+            for (var i = 0; i < inputs.length; i++) {
+               
+                inputs[i].addEventListener('blur', getMatrixValuesFromPython);
+
+            
+                inputs[i].addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter') {
+                        getMatrixValuesFromPython();
+                    }
+                });
+            }
+        
+        }
+        function initializeMatrix() {
+            createMatrix();
+            attachEventListeners();
+        }
+           
+        initializeMatrix();
+
+
+        
     </script>
 </body>
 
@@ -310,79 +384,105 @@ def vecteur_html():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vecteur Dynamique</title>
     <style>
+    
+
         .vector-container {
-            display: flex;
-            flex-direction: row;
-            align-items: left;
-            margin: 20px;
-        }
+        display: flex;
+        flex-direction: row;
+        align-items: left;
         
-        body {
-            padding: 0px;
-            margin: 0px;
-            max-width: 1444px;
-            min-width: min-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .vector-cell {
-            width: 40px;
-            height: 40px;
-            border: 1px solid black;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2px;
-        }
-        
-        input {
-            width: 100%;
-            height: 100%;
-            border: none;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            color: #242424;
-            color: var(--color-text);
-            padding: 12px;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            overflow-y: scroll;
-            background-color: white;
-            background-color: var(--color-background);
-            background-size: 60px 40px;
-            background-position: -1px -1px;
-            font-size: 17px;
-            line-height: 1.5;
-        }
-        
-        .button-container {
-            margin-top: 10px;
-        }
-        
+        margin-top: 30px;
+    }
+
+    body {
+        padding: 0px;
+        margin: 0px;
+        max-width: 1444px;
+        min-width: min-content;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #ffffff;
+        color: #242424;
+    }
+
+    .vector-cell {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+    }
+
+    input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        box-sizing: border-box;
+        text-align: center;
+        color: #000000;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        padding: 12px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        overflow-y: scroll;
+        background-color: #ffffff;
+        background-size: 60px 40px;
+        background-position: -1px -1px;
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .button-container {
+        margin-top: 10px;
+      
+    }
         .add-button {
             display: inline-block;
-            padding: 2px 12px;
-            margin: 1px;
-            line-height: 20px;
-            color: #333333;
-            color: var(--color-button);
+            padding: 2px 8px;
+            margin: 0px;
+            line-height: 1;
+            color: #ffffff;
             text-align: center;
-            vertical-align: middle;
+            text-decoration: none;
             cursor: pointer;
-            background-color: hsl(0, 0%, 97%);
-            background-image: linear-gradient(to bottom, hsl(0, 0%, 100%), hsl(0, 0%, 90%));
             border: 1px solid;
-            border-color: silver;
-            border-bottom-color: darkgray;
-            border-radius: 2px;
-            box-shadow: inset 0px 1px 0px hsla(0, 0%, 100%, 0.2), 0px 1px 2px hsla(0, 0%, 0%, 0.05);
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        .add-button.blue-theme {
+            background-color: #3498db;
+            border-color: #87CEEB;
+        }
+
+        .add-button.dark-theme {
+            background-color: #242424;
+            border-color: #242424;
+        }
+
+        .add-button.light-theme {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            color: #242424;
+        }
+
+        .add-button:hover {
+            background-color: #4682b4;
+            color: #ffffff;
+        }
+        .vector-cell-filled {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+
+
     </style>
 </head>
 
@@ -394,10 +494,11 @@ def vecteur_html():
     </div>
 
     <div class="button-container">
-        <button class="add-button" onclick="add()">+</button>
-        <button class="add-button" onclick="retirer()">-</button>
-        <button class="add-button" onclick="effacer()">effacer</button>
-        <button class="add-button" onclick="getVectorValuesFromPython()">Sauvgarder B</button>
+        <button class="add-button blue-theme" onclick="add()">+</button>
+        <button class="add-button blue-theme" onclick="retirer()">-</button>
+        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
+        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+
     </div>
 
     <script>
@@ -420,7 +521,7 @@ def vecteur_html():
                 cell.classList.add("vector-cell");
 
                 var input = document.createElement("input");
-                input.type = "text";
+                input.type = "number";
                 input.classList.add("vector-input");
                 input.id = "element_" + i;
 
@@ -430,6 +531,18 @@ def vecteur_html():
 
             vectorContainer.appendChild(vector);
             restoreVectorValues();
+        }
+                function remplirCasesVides() {
+            var inputs = document.getElementsByClassName("vector-input");
+
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === "") {
+                    inputs[i].value = 0;
+                }
+
+            }
+            getVectorValuesFromPython();
+           
         }
 
         function getVectorValues() {
@@ -447,8 +560,12 @@ def vecteur_html():
             for (var i = 0; i < numElements; i++) {
                 var value = vectorValues[i] !== undefined ? vectorValues[i] : '';
                 inputs[i].value = value;
-            }
-        }
+            
+            if (value !== '') {
+                    inputs[i].classList.add('vector-cell-filled');
+                }
+              attachEventListeners();
+        }}
 
         function saveVectorValues() {
             var inputs = document.getElementsByClassName("vector-input");
@@ -457,7 +574,13 @@ def vecteur_html():
             for (var i = 0; i < numElements; i++) {
                 var inputValue = inputs[i].value;
                 vectorValues.push(inputValue);
+                  if (inputValue !== '') {
+                    inputs[i].classList.add('vector-cell-filled');
+                } else {
+                    inputs[i].classList.remove('vector-cell-filled');
+                }
             }
+               attachEventListeners();
         }
 
         function add() {
@@ -510,8 +633,27 @@ def vecteur_html():
                 .catch(error => console.error('Error:', error));
         }
 
+        function attachEventListeners() {
+            var inputs = document.getElementsByClassName("vector-input");
 
-        createVector();
+            for (var i = 0; i < inputs.length; i++) {
+               
+                inputs[i].addEventListener('blur',  getVectorValuesFromPython);
+
+            
+                inputs[i].addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter') {
+                         getVectorValuesFromPython();
+                    }
+                });
+            }
+        }
+        function initializevect() {
+              createVector();
+            attachEventListeners();
+        }
+        initializevect();
+      
     </script>
 </body>
 
@@ -521,8 +663,8 @@ def vecteur_html():
     return html_code
 
 def matriceB_html():
-    html_code="""
-    <!DOCTYPE html>
+    html_code = """
+   <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -534,7 +676,7 @@ def matriceB_html():
             display: flex;
             flex-direction: column;
             align-items: left;
-            margin: 20px;
+            margin-top: 20px;
         }
         
         body {
@@ -547,7 +689,7 @@ def matriceB_html():
         }
         
         .matrix {
-            margin: 10px;
+            margin: 5px;
             display: flex;
             flex-direction: column;
         }
@@ -586,54 +728,88 @@ def matriceB_html():
             background-color: white;
             background-color: var(--color-background);
             background-size: 60px 40px;
-            background-position: -1px -1px;
+            background-position: -1px -1px  ;
             font-size: 17px;
             line-height: 1.5;
         }
         
         .button-container {
-            margin-top: 10px;
-        }
-        
+        margin-top: 10px;
+      
+    }
         .add-button {
             display: inline-block;
-            padding: 2px 12px;
-            margin: 1px;
-            line-height: 20px;
-            color: #333333;
-            color: var(--color-button);
+            padding: 2px 8px;
+            margin: 0px;
+            line-height: 1;
+            color: #ffffff;
             text-align: center;
-            vertical-align: middle;
+            text-decoration: none;
             cursor: pointer;
-            background-color: hsl(0, 0%, 97%);
-            background-image: linear-gradient(to bottom, hsl(0, 0%, 100%), hsl(0, 0%, 90%));
             border: 1px solid;
-            border-color: silver;
-            border-bottom-color: darkgray;
-            border-radius: 2px;
-            box-shadow: inset 0px 1px 0px hsla(0, 0%, 100%, 0.2), 0px 1px 2px hsla(0, 0%, 0%, 0.05);
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        .add-button.blue-theme {
+            background-color: #3498db;
+            border-color: #87CEEB;
+        }
+
+        .add-button.dark-theme {
+            background-color: #242424;
+            border-color: #242424;
+        }
+
+        .add-button.light-theme {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            color: #242424;
+        }
+
+        .add-button:hover {
+            background-color: #4682b4;
+            color: #ffffff;
+        }
+        .matrix-cell-filled {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
     </style>
 </head>
 
 <body>
-    <legend align="left">La matrice B:</legend>
+    <legend align="left">La matrice B :</legend>
 
     <div class="matrix-container" id="matrix-container">
         <!-- La matrice sera générée dynamiquement ici -->
     </div>
 
     <div class="button-container">
-        <button class="add-button" onclick="add()">+</button>
-        <button class="add-button" onclick="retirer()">-</button>
-        <button class="add-button" onclick="effacer()">effacer</button>
-        <button class="add-button" onclick="getMatrixValuesFromPython()">Sauvgarder B</button>
+        <button class="add-button blue-theme" onclick="add()">+</button>
+        <button class="add-button blue-theme" onclick="retirer()">-</button>
+        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
+        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+
+
     </div>
 
     <script>
         var matrixValues = [];
         var numRows = 2;
         var numCols = 2;
+        function remplirCasesVides() {
+        var inputs = document.getElementsByClassName("matrix-input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value === "") {
+                inputs[i].value = 0;
+            }
+
+        }
+        getMatrixValuesFromPython()
+    }
 
         function createMatrix() {
             var oldMatrix = document.getElementById("matrix");
@@ -655,9 +831,10 @@ def matriceB_html():
                     cell.classList.add("matrix-cell");
 
                     var input = document.createElement("input");
-                    input.type = "text";
+                    input.type = "number";
                     input.classList.add("matrix-input");
                     input.id = "cell_" + i + "_" + j;
+                    
 
                     cell.appendChild(input);
                     row.appendChild(cell);
@@ -680,29 +857,45 @@ def matriceB_html():
         }
 
         function restoreMatrixValues() {
-            var inputs = document.getElementsByClassName("matrix-input");
+                var inputs = document.getElementsByClassName("matrix-input");
 
-            for (var i = 0; i < numRows; i++) {
-                for (var j = 0; j < numCols; j++) {
-                    var value = matrixValues[i] && matrixValues[i][j] !== undefined ? matrixValues[i][j] : '';
-                    inputs[i * numCols + j].value = value;
+                for (var i = 0; i < numRows; i++) {
+                    for (var j = 0; j < numCols; j++) {
+                        var value = matrixValues[i] && matrixValues[i][j] !== undefined ? matrixValues[i][j] : '';
+                        inputs[i * numCols + j].value = value;
+
+                        if (value !== '') {
+                            inputs[i * numCols + j].classList.add('matrix-cell-filled');
+                        } else {
+                            inputs[i * numCols + j].classList.remove('matrix-cell-filled');
+                        }
+                    }
                 }
+                attachEventListeners();
             }
-        }
 
-        function saveMatrixValues() {
-            var inputs = document.getElementsByClassName("matrix-input");
-            matrixValues = [];
 
-            for (var i = 0; i < numRows; i++) {
-                var rowValues = [];
-                for (var j = 0; j < numCols; j++) {
-                    var inputValue = inputs[i * numCols + j].value;
-                    rowValues.push(inputValue);
+                    function saveMatrixValues() {
+                var inputs = document.getElementsByClassName("matrix-input");
+                matrixValues = [];
+
+                for (var i = 0; i < numRows; i++) {
+                    var rowValues = [];
+                    for (var j = 0; j < numCols; j++) {
+                        var inputValue = inputs[i * numCols + j].value;
+                        rowValues.push(inputValue);
+
+                        if (inputValue !== '') {
+                            inputs[i * numCols + j].classList.add('matrix-cell-filled');
+                        } else {
+                            inputs[i * numCols + j].classList.remove('matrix-cell-filled');
+                        }
+                    }
+                    matrixValues.push(rowValues);
                 }
-                matrixValues.push(rowValues);
+                attachEventListeners();
             }
-        }
+
 
         function add() {
             saveMatrixValues();
@@ -737,12 +930,12 @@ def matriceB_html():
         }
 
         function getMatrixValuesFromPython() {
-
+           
             fetch('https://webapp-esz7.onrender.com/get_matrix_values_B')
-            updateMatrixValuesInPython()
+                updateMatrixValuesInPython()
                 .then(response => response.json())
                 .then(data => {
-                    matrixValuesB = data;
+                    matrixValuesA = data;
                     restoreMatrixValues();
                 })
                 .catch(error => console.error('Error:', error));
@@ -756,19 +949,41 @@ def matriceB_html():
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        matrixValuesB: matrixValues
+                        matrixValuesA: matrixValues
                     }),
                 })
                 .then(response => response.json())
                 .then(data => console.log('Success:', data))
                 .catch(error => console.error('Error:', error));
         }
+        function attachEventListeners() {
+            var inputs = document.getElementsByClassName("matrix-input");
 
-        createMatrix();
+            for (var i = 0; i < inputs.length; i++) {
+               
+                inputs[i].addEventListener('blur', getMatrixValuesFromPython);
+
+            
+                inputs[i].addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter') {
+                        getMatrixValuesFromPython();
+                    }
+                });
+            }
+        
+        }
+        function initializeMatrix() {
+            createMatrix();
+            attachEventListeners();
+        }
+           
+        initializeMatrix();
+
+
+        
     </script>
 </body>
 
 </html>
     """
     return html_code
-
