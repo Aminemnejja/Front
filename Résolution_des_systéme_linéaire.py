@@ -119,9 +119,9 @@ def main():
                                 st.dataframe(FR.matrix_to_fraction(U))
                         st.write("X=")
                         st.dataframe(FR.matrix_to_fraction(x))
-                    elif  matrix_type_A[0]=="Symétrique" and np.all(np.linalg.eigvals(A) >0):
+                    elif  matrix_type_A=="Symétrique" and np.all(np.linalg.eigvals(A) >0):
                         st.header("A=L.D.L\u1D57=LU")
-                        L,D=m.decomposition_LU_dense_Symetrique(A, n)
+                        L,D=m.decomposition_LU_Dense_Symetrique(A, n)
                         U=np.dot(D,L.T)
                         y = t.sys_lin_inf_dense(L, b,n)
                         x = t.sys_lin_sup_dense(U, y,n)
