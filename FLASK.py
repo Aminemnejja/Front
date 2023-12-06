@@ -148,7 +148,7 @@ def matriceA_html():
         }
 
         .add-button.light-theme {
-            background-color: #ffffff;
+            background-color: #a7acac;
             border-color: #ffffff;
             color: #242424;
         }
@@ -158,7 +158,7 @@ def matriceA_html():
             color: #ffffff;
         }
         .matrix-cell-filled {
-            background-color: #3498db;
+            background-color: #a2cfee;
             color: #ffffff;
         }
 
@@ -173,10 +173,10 @@ def matriceA_html():
     </div>
 
     <div class="button-container">
-        <button class="add-button blue-theme" onclick="add()">+</button>
-        <button class="add-button blue-theme" onclick="retirer()">-</button>
-        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
-        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+        <button class="add-button light-theme" onclick="add()">+</button>
+        <button class="add-button light-theme" onclick="retirer()">-</button>
+        <button class="add-button light-theme" onclick="effacer()">effacer</button>
+        <button class="add-button light-theme" onclick="remplirCasesVides()">Remplir par 0</button>
 
 
     </div>
@@ -466,8 +466,8 @@ def vecteur_html():
             border-color: #242424;
         }
 
-        .add-button.light-theme {
-            background-color: #ffffff;
+       .add-button.light-theme {
+            background-color: #a7acac;
             border-color: #ffffff;
             color: #242424;
         }
@@ -477,7 +477,7 @@ def vecteur_html():
             color: #ffffff;
         }
         .vector-cell-filled {
-            background-color: #3498db;
+            background-color: #a2cfee;
             color: #ffffff;
         }
 
@@ -494,10 +494,10 @@ def vecteur_html():
     </div>
 
     <div class="button-container">
-        <button class="add-button blue-theme" onclick="add()">+</button>
-        <button class="add-button blue-theme" onclick="retirer()">-</button>
-        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
-        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+        <button class="add-button light-theme" onclick="add()">+</button>
+        <button class="add-button light-theme" onclick="retirer()">-</button>
+        <button class="add-button light-theme" onclick="effacer()">effacer</button>
+        <button class="add-button light-theme" onclick="remplirCasesVides()">Remplir par 0</button>
 
     </div>
 
@@ -762,7 +762,7 @@ def matriceB_html():
         }
 
         .add-button.light-theme {
-            background-color: #ffffff;
+            background-color: #a7acac;
             border-color: #ffffff;
             color: #242424;
         }
@@ -772,7 +772,7 @@ def matriceB_html():
             color: #ffffff;
         }
         .matrix-cell-filled {
-            background-color: #3498db;
+            background-color: #a2cfee;
             color: #ffffff;
         }
 
@@ -787,10 +787,10 @@ def matriceB_html():
     </div>
 
     <div class="button-container">
-        <button class="add-button blue-theme" onclick="add()">+</button>
-        <button class="add-button blue-theme" onclick="retirer()">-</button>
-        <button class="add-button blue-theme" onclick="effacer()">effacer</button>
-        <button class="add-button blue-theme" onclick="remplirCasesVides()">Remplir par 0</button>
+        <button class="add-button light-theme" onclick="add()">+</button>
+        <button class="add-button light-theme" onclick="retirer()">-</button>
+        <button class="add-button light-theme" onclick="effacer()">effacer</button>
+        <button class="add-button light-theme" onclick="remplirCasesVides()">Remplir par 0</button>
 
 
     </div>
