@@ -935,7 +935,7 @@ def matriceB_html():
                 updateMatrixValuesInPython()
                 .then(response => response.json())
                 .then(data => {
-                    matrixValuesA = data;
+                    matrixValuesB = data;
                     restoreMatrixValues();
                 })
                 .catch(error => console.error('Error:', error));
@@ -949,7 +949,7 @@ def matriceB_html():
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        matrixValuesA: matrixValues
+                        matrixValuesB: matrixValues
                     }),
                 })
                 .then(response => response.json())
