@@ -8,7 +8,7 @@ from Functions import Fraction as FR
 def main():
   
 
-    selected_option = st.radio("Sélectionnez une opération", ["Multiplier par une matrice", "Multiplication par inverse de matrice A demi bande", "Multiplication de matrice A par son transposée"])
+    selected_option = st.radio("Sélectionnez une opération", ["Multiplier par une matrice", "Chercher inverse de matrice A", "Multiplication de matrice A par son transposée"])
     matriceA_html=f.matriceA_html()
     matriceB_html=f.matriceB_html()
     if selected_option == "Multiplier par une matrice":
@@ -23,7 +23,7 @@ def main():
         if st.button("Résultat"):
             app_multiply_matrices()
 
-    elif selected_option == " Chercher inverse de A  ":
+    elif selected_option == "Chercher inverse de matrice A":
         st.header("Multiplication de  A\u207B\u00B9")
         st.components.v1.html(matriceA_html,width=300, height=300)
   
