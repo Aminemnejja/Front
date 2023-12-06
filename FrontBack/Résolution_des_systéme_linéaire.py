@@ -1,11 +1,11 @@
 import streamlit as st
 import numpy as np
-import Determinated_Nature_Matrice as dt
+from Functions  import Determinated_Nature_Matrice as dt
 import FLASK as f
-import Systeme_Lineaire_Triangulaire as t
-import Méthode_direct as m
-import Méthode_itérative as I
-import Fraction as FR 
+from Functions  import Systeme_Lineaire_Triangulaire as t
+from Functions  import Méthode_direct as m
+from Functions import Méthode_itérative as I
+from Functions import Fraction as FR 
 
 def est_decomposable_LU(matrice):
     n = matrice.shape[0]

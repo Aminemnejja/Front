@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
-import Determinated_Nature_Matrice as dt
-import Matrice_Matrice as MA
+from Functions import Determinated_Nature_Matrice as dt
+from Functions import Matrice_Matrice as MA
 import FLASK as f
-import Fraction as FR
+from Functions import Fraction as FR
 
 def main():
   

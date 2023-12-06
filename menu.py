@@ -1,8 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-import Multiplication_Matrice_parMatrice as p
-import Multiplication_Matrice_parVeteur as v
-import Résolution_des_systéme_linéaire as R
+from  FrontBack  import Multiplication_Matrice_parMatrice as p
+from  FrontBack import Multiplication_Matrice_parVeteur as v
+from  FrontBack import Résolution_des_systéme_linéaire as R
 # Définir la configuration de la page
 st.set_page_config(
         page_title="Calculatrice Matricielle",

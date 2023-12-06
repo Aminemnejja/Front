@@ -1,5 +1,5 @@
 import numpy as np
-import Systeme_Lineaire_Triangulaire as t
+from Functions import Systeme_Lineaire_Triangulaire as t
 
 
 
@@ -10,21 +10,21 @@ def gauss_jordan_dense(matrice ,b,n):
         # Trouver l'indice de la ligne avec le pivot maximal
         max_pivot_index = np.argmax(np.abs(aug_matrix[k:, k])) + k
         
-        # Échanger les lignes si le pivot est nul
+        # ï¿½changer les lignes si le pivot est nul
         if aug_matrix[max_pivot_index, k] == 0:
-            # Gestion du cas où toutes les entrées sous la colonne k sont nulles
+            # Gestion du cas oï¿½ toutes les entrï¿½es sous la colonne k sont nulles
             continue
         else:
             aug_matrix[[k, max_pivot_index], :] = aug_matrix[[max_pivot_index, k], :]
 
-        # Échelonner la colonne k
+        # ï¿½chelonner la colonne k
         pivot = aug_matrix[k, k]
 
-        # Diviser chaque élément de la ligne par le pivot
+        # Diviser chaque ï¿½lï¿½ment de la ligne par le pivot
         for j in range(k+1,n+1):
             aug_matrix[k, j] /= pivot
         
-        # Éliminer les autres colonnes en dessous et au-dessus de la diagonale
+        # ï¿½liminer les autres colonnes en dessous et au-dessus de la diagonale
         # Il faut i != k !!! Diviser en deux boucles
         for i in range(k):
                 ratio = aug_matrix[i, k]
@@ -149,7 +149,7 @@ def decomposition_LU_bande(A,n,m):
             L[i][k] = (A[i][k] - sum(L[i][j] * U[j][k] for j in range(k))) / U[k][k]
     return L,U
 def decomposition_LU_Dense_Symetrique(A,n):
-    #pour matrice symétrique A=L*D*Transposée(L)
+    #pour matrice symï¿½trique A=L*D*Transposï¿½e(L)
 
     L = np.zeros_like(A, dtype=float)
     D = np.zeros(n, dtype=float)
@@ -168,7 +168,7 @@ def decomposition_LU_Dense_Symetrique(A,n):
 
     return L, np.diag(D)
 def decomposition_LU_bande_Symetrique(A, n,m):
-    #pour matrice symétrique A=L*D*Transposée(L)
+    #pour matrice symï¿½trique A=L*D*Transposï¿½e(L)
     L = np.zeros_like(A, dtype=float)
     D = np.zeros(n, dtype=float)
 
@@ -222,14 +222,14 @@ def elimination_gaussienne_avec_pivot_dense(A,b,n):
     for k in range(n-1):
         # Trouver l'indice de la ligne avec le pivot maximal
         max_pivot_index = np.argmax(np.abs(A[k:, k])) + k
-        # Échanger les lignes si le pivot est nul
+        # ï¿½changer les lignes si le pivot est nul
         if A[max_pivot_index, k] == 0:
             continue
         else:
             A[[k, max_pivot_index],:] = A[[max_pivot_index, k], :]
             b[[k, max_pivot_index]] = b[[max_pivot_index, k]]
 
-        # Échelonner la colonne k
+        # ï¿½chelonner la colonne k
         pivot = A[k][k]
         for i in range(k+1, n):
             A[i][k] /= pivot 
@@ -245,14 +245,14 @@ def elimination_gaussienne_avec_pivot_bande(A, b, n,m):
         # Trouver l'indice de la ligne avec le pivot maximal
         max_index = np.argmax(np.abs(A[k:, k])) + k +1
 
-        # Échanger les lignes si le pivot est nul
+        # ï¿½changer les lignes si le pivot est nul
         if A[max_index - 1, k] == 0:
             continue
         else:
             A[[k, max_index - 1], :] = A[[max_index - 1, k], :]
             b[[k, max_index - 1]] = b[[max_index - 1, k]]
 
-        # Échelonner la colonne k
+        # ï¿½chelonner la colonne k
         pivot = A[k][k]
         for i in range(k + 1, min(k + xn + 1, n)):
             A[i][k] /= pivot

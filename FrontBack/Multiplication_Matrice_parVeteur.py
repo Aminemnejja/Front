@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
-import Determinated_Nature_Matrice as dt
-import Matrice_Vecteur as MV
+from Functions import Determinated_Nature_Matrice as dt
+from Functions  import Matrice_Vecteur as MV
 import FLASK as f
-import Fraction as FR
+from Functions import Fraction as FR
 
 def app():
     st.header("Multiplication y=Ab")
