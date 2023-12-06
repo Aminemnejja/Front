@@ -114,16 +114,4 @@ def Gauss_Seidel_fixed_iterations(A, B, n, num_iterations):
     return x
 
 
-A = np.array([[2, 1],
-             [5, 3]])
-B = np.array([1, 0])
-n = A.shape[0]
-eps = 1e-10
-num_iterations=1000
-result_jacobi = jacobi_epsilon(A, B, n, eps)
-result_soleide=Gauss_Seidel_epsilon(A, B, n, eps)
-print(jacobi_fixed_iterations(A, B, n, num_iterations))
-print(Gauss_Seidel_fixed_iterations(A, B, n, num_iterations))
 
-print("Solution Jacobi:", result_jacobi)
-print("solution ",result_soleide)

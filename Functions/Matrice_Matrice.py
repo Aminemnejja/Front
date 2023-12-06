@@ -12,7 +12,6 @@ def multiplication_dense_dense(A,B,n):
 
 
 
-
 def multiplication_matrice_band_demi_bande(A, B,m,n):
     result = np.zeros((n, n))
     for i in range(n):
@@ -31,7 +30,6 @@ def multiplication_demi_bande_sup_bande(A, B,s,t,n):
     for i in range(n):
        
         for j in range(max(0,i-s),min(n,t+i+1)):
-
 
             for k in range(max(max(0,i-s),max(0,j-t)),min(i+1,j+1)):
                 result[i, j] += A[i, k] * B[k, j]
@@ -54,6 +52,7 @@ def multiplication_bande_transposer(A,m,n):
 
 def gauss_jordan_inverse(matrice, n):
     aug_matrix = np.hstack([matrice, np.eye(n)])
+    #[A I] =[I A-1]
     
     for k in range(n):
         # Trouver l'indice de la ligne avec le pivot maximal
@@ -65,12 +64,11 @@ def gauss_jordan_inverse(matrice, n):
             continue
         else:
             aug_matrix[[k, max_pivot_index], :] = aug_matrix[[max_pivot_index, k], :]
-
         # Échelonner la colonne k
         pivot = aug_matrix[k, k]
 
         # Diviser chaque élément de la ligne par le pivot
-        for j in range(2 * n):
+        for j in range(2 * n): 
             aug_matrix[k, j] /= pivot
         
         # Éliminer les autres colonnes en dessous et au-dessus de la diagonale
@@ -87,7 +85,6 @@ def gauss_jordan_inverse(matrice, n):
 
     inverse_matrix = aug_matrix[:, n:]
     return inverse_matrix
-
 
 def multiplication_bande_inverse(A,n,m):
     inverse_A=gauss_jordan_inverse(A, n)

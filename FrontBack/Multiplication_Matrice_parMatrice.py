@@ -96,6 +96,11 @@ def app_inverse_multiply_band_matrix():
             with col2:
                 st.success("Résultat de multiplication")
                 st.dataframe(FR.matrix_to_fraction(result[0]))
+        else:
+            
+
+
+
                 
         
     except ValueError as e:
