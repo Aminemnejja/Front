@@ -13,6 +13,10 @@ Un projet de calcul matriciel avec une interface utilisateur conviviale utilisan
 ## Installation
 
 Pour installer les dépendances, exécutez la commande suivante :
-
+Assurez-vous d'avoir Python installé.
 ```bash
+git clone https://github.com/Aminemnejja/Front
 pip install -r requirements.txt
+#aller au dossier du traviller 
+streamlit run menu.py
+
