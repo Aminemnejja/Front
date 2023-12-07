@@ -20,3 +20,6 @@ pip install -r requirements.txt
 #aller au dossier du traviller 
 streamlit run menu.py
 
+## Utlisation
+voici url pour accéder au site :[https://ppywgxapdvurynzbbqi4dq.streamlit.app/](https://ppywgxapdvurynzbbqi4dq.streamlit.app/)
+
