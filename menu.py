@@ -25,7 +25,7 @@ class MultiApp:
 
     def run(self):
         # En-tête de la page
-        st.title("Calculatrice Matricielle")
+        st.title("Calcule Matricielle")
 
         # Division de la page en colonnes pour le menu et le contenu
         col_menu, col_content = st.columns([2, 3])
