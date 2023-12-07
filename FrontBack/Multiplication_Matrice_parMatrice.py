@@ -17,15 +17,15 @@ def main():
 
         col1,col2=st.columns(2)
         with col1:
-            st.components.v1.html(matriceA_html,width=300, height=300)
+            st.components.v1.html(matriceA_html,width=300, height=300,scrolling=True)
         with col2:
-            st.components.v1.html(matriceB_html,width=300, height=300)
+            st.components.v1.html(matriceB_html,width=300, height=300,scrolling=True)
         if st.button("Résultat"):
             app_multiply_matrices()
 
     elif selected_option == "Chercher inverse de matrice A":
         st.header("Multiplication de  A\u207B\u00B9")
-        st.components.v1.html(matriceA_html,width=300, height=300)
+        st.components.v1.html(matriceA_html,width=300, height=300,scrolling=True)
   
 
         if st.button("Résultat"):
@@ -35,7 +35,7 @@ def main():
     elif selected_option == "Multiplication de matrice A par son transposée":
         st.header("Multiplication de AAᵀ")
         
-        st.components.v1.html(matriceA_html,width=300, height=300)
+        st.components.v1.html(matriceA_html,width=300, height=300,scrolling=True)
 
         if st.button("Résultat"):
             app_multiply_transpose_band_matrix()
