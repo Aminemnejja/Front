@@ -9,7 +9,8 @@ Un projet de calcul matriciel avec une interface utilisateur conviviale utilisan
 - `Flask.py` : Implémente les requêtes GET pour récupérer des matrices.
 - `flaskapp.py` : Initialise le serveur backend avec prise en charge de CORS.
 - `menu.py` : Fichier principal pour exécuter l'interface utilisateur Streamlit.
-
+##  Utlisation
+voici url pour accéder au site :[https://ppywgxapdvurynzbbqi4dq.streamlit.app/](https://ppywgxapdvurynzbbqi4dq.streamlit.app/)
 ## Installation
 
 Pour installer les dépendances, exécutez la commande suivante :
@@ -18,8 +19,7 @@ Assurez-vous d'avoir Python installé.
 git clone https://github.com/Aminemnejja/Front
 pip install -r requirements.txt
 #aller au dossier du traviller 
-streamlit run menu.py'''
+streamlit run menu.py
 
-## Utlisation
-voici url pour accéder au site :[https://ppywgxapdvurynzbbqi4dq.streamlit.app/](https://ppywgxapdvurynzbbqi4dq.streamlit.app/)
+
 
