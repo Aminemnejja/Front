@@ -5,7 +5,7 @@ from  FrontBack import Multiplication_Matrice_parVeteur as v
 from  FrontBack import Résolution_des_systéme_linéaire as R
 # Définir la configuration de la page
 st.set_page_config(
-        page_title="Calculatrice Matricielle",
+        page_title="Calcule Matricielle",
         page_icon="🔢",
         layout="wide"
     )
