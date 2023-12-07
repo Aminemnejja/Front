@@ -14,9 +14,13 @@ Bienvenue dans le projet de calcul matriciel, une application conviviale qui com
 
 Pour accéder à l'interface utilisateur, [cliquez ici](https://ppywgxapdvurynzbbqi4dq.streamlit.app/).
 
+
+
 ## Installation
 
 Clonez le dépôt et installez les dépendances avec les commandes suivantes :
+Assurez-vous d'avoir Python installé sur votre machine avant d'exécuter ces commandes.
+N'hésitez pas à explorer les différents dossiers et fichiers pour découvrir les fonctionnalités et les algorithmes matriciels proposés.
 
 ```bash
 git clone https://github.com/Aminemnejja/Front
@@ -24,6 +28,4 @@ cd Front
 pip install -r requirements.txt
 streamlit run menu.py
 
-Assurez-vous d'avoir Python installé sur votre machine avant d'exécuter ces commandes.
 
-N'hésitez pas à explorer les différents dossiers et fichiers pour découvrir les fonctionnalités et les algorithmes matriciels proposés.
