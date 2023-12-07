@@ -11,9 +11,9 @@ def app():
     vecteur_html=f.vecteur_html()
     col1,col2=st.columns(2)
     with col1:
-        st.components.v1.html(matrice_html,width=300, height=300)
+        st.components.v1.html(matrice_html,width=300, height=300,scrolling=True)
     with col2:
-        st.components.v1.html(vecteur_html,width=300, height=300)
+        st.components.v1.html(vecteur_html,width=300, height=300,scrolling=True)
 
     if st.button("Multiplier"):
        try:
