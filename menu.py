@@ -58,6 +58,21 @@ class MultiApp:
                     st.markdown(f'<div style="font-size: 40px; margin-bottom: 20px; color: #FFD700">{a["icon"]}</div>', unsafe_allow_html=True)
                     # Exécution de la fonction associée à l'application
                     a["function"]()
+        st.text("\n")
+        st.text("\n")
+        st.text("\n")
+        st.text("\n") 
+        col1, col3= st.columns(2)
+        with col1:
+            st.text("Superviseur:Dr.Sirine MARRAKCHI")
+            st.text("   Matière:Algorithmes Numériques")
+   
+           
+        with col3:
+            st.text("Filière:Cycle d'ingénieur")
+            st.text("    Etablissement:Faculté des Sciences de Sfax")
+            st.image("image.png",width=100);
+         
 
 # Création d'une instance de MultiApp
 multi_app = MultiApp()
