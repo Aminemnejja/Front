@@ -11,7 +11,6 @@ Bienvenue dans le projet de calcul matriciel, une application conviviale qui com
 - **menu.py** : Fichier principal pour exécuter l'interface utilisateur Streamlit.
 
 ## Utilisation
-![Capture d’écran (220)](https://github.com/Aminemnejja/Front/assets/101280583/dddcf815-b586-4f6e-a387-810d33c0105b)
 
 
 Pour accéder à l'interface utilisateur, [cliquez ici](https://ppywgxapdvurynzbbqi4dq.streamlit.app/).
