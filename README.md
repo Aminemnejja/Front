@@ -4,12 +4,12 @@ Bienvenue dans le projet de calcul matriciel, une application conviviale qui com
 
 # Contexte Académique
 Ce projet a été réalisé par une équipe d'étudiants sous la supervision du Dr. Sirine MARRAKCHI dans le cadre de la matière "Algorithmes Numériques". Il fait partie du programme du cycle d'ingénieur en informatique et communications à la Faculté des Sciences de Sfax.
-# Equipe
+## Equipe
 Ce projet a été réalisé par une équipe composée des membres suivants :
-**Amine Mnejja/**.
-**Ali Cheffi/**.
-**Hana Kanoun/**.
-**/Iyed Djebbi/**.
+- Amine Mnejja
+- Ali Cheffi
+- Hana Kanoun
+- Iyed Djebbi
 ## Structure du Projet
 
 - **Functions/** : Ce répertoire regroupe des algorithmes de calcul matriciel réutilisables.
