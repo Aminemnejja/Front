@@ -3,7 +3,7 @@
 Bienvenue dans le projet de calcul matriciel, une application conviviale qui combine l'efficacité des algorithmes matriciels du dossier `Functions` avec une interface utilisateur attrayante construite à l'aide de Streamlit pour le front-end et Flask pour le back-end.
 
 # Contexte Académique
-Ce projet a été réalisé par une équipe d'étudiants sous la supervision du Dr. Sirine MARRAKCHI dans le cadre de la matière "Algorithmes Numériques". Il fait partie du programme du cycle d'ingénieur en informatique et communications à la Faculté des Sciences de Sfax.
+Ce projet a été réalisé par une équipe d'étudiants sous la supervision du **Dr. Sirine MARRAKCHI** dans le cadre de la matière "Algorithmes Numériques". Il fait partie du programme du cycle d'ingénieur en informatique et communications à la Faculté des Sciences de Sfax.
 ## Equipe
 Ce projet a été réalisé par une équipe composée des membres suivants :
 - Amine Mnejja
