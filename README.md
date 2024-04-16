@@ -34,8 +34,8 @@ Assurez-vous d'avoir Python installé sur votre machine avant d'exécuter ces co
 N'hésitez pas à explorer les différents dossiers et fichiers pour découvrir les fonctionnalités et les algorithmes matriciels proposés.
 
 ```bash
-git clone https://github.com/Aminemnejja/Front
-cd Front
+git clone https://github.com/Aminemnejja/MatrixCalculator
+cd MatrixCalculator
 pip install -r requirements.txt
 streamlit run menu.py
 
